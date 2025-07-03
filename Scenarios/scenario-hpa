@@ -1,0 +1,64 @@
+# Scenario 27: Configuring a Horizontal Pod Autoscaler (HPA)
+
+# Step 1: Deploy the Application with Resource Constraints
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-apache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-apache
+  template:
+    metadata:
+      labels:
+        app: php-apache
+    spec:
+      containers:
+      - name: php-apache
+        image: k8s.gcr.io/hpa-example
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 200m
+          limits:
+            cpu: 500m
+
+---
+
+# Step 2: Expose the Deployment with a Service
+# Command:
+# kubectl expose deployment php-apache --port=80 --target-port=80 --name=web-app
+
+---
+
+# Step 3: Ensure Metrics Server is Running
+# Command to test metrics:
+# kubectl top pods
+# If metrics are missing, install Metrics Server:
+# kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+---
+
+# Step 4: Create the Horizontal Pod Autoscaler
+# Command:
+# kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=5
+# Check HPA:
+# kubectl get hpa
+
+---
+
+# Step 5: Simulate Load to Trigger Scaling
+# Run load generator:
+# kubectl run -i --tty load-generator --rm --image=busybox /bin/sh
+# Inside container:
+# while true; do wget -q -O- http://web-app; done
+
+---
+
+# Step 6: Monitor HPA Behavior
+# Command:
+# kubectl get hpa --watch
+# Expected: CPU usage exceeds 50% → replicas increase to up to 5
