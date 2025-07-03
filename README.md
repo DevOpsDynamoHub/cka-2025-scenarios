@@ -25,4 +25,5 @@ We priced it low — **just enough to support the research hours behind it**.
 👉 [Get Paid Version – $20 (Payhip)](https://payhip.com/b/3iAsH)  
 👉 [Gumroad Mirror](https://devopsdynamo.gumroad.com/l/Conquer-cka-exam)
 
+**there’s a 15% discount until July 8 using the code CKA15SUMMER.**
 
