@@ -1,0 +1,83 @@
+# Scenario 28: Creating and Using a CustomResourceDefinition (CRD) in Kubernetes
+
+# This scenario demonstrates how to define and use a Kubernetes CRD for managing flight ticket data.
+# CRDs are essential for extending Kubernetes APIs, often used in GitOps, operators, and custom platforms.
+
+# Step 1: Define the CustomResourceDefinition
+# Save this as flightticket-crd.yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: flighttickets.flights.com
+spec:
+  group: flights.com
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                from:
+                  type: string
+                to:
+                  type: string
+                passengers:
+                  type: integer
+                  minimum: 1
+  scope: Namespaced
+  names:
+    plural: flighttickets
+    singular: flightticket
+    kind: FlightTicket
+    shortNames:
+    - ft
+
+# Apply the CRD
+# kubectl apply -f flightticket-crd.yaml
+
+---
+
+# Step 2: Confirm the CRD is Registered
+# kubectl get crd flighttickets.flights.com
+# kubectl api-resources | grep flight
+
+---
+
+# Step 3: Create a FlightTicket Resource Instance
+# Save this as london-ticket.yaml
+apiVersion: flights.com/v1
+kind: FlightTicket
+metadata:
+  name: london-ticket
+spec:
+  from: NYC
+  to: London
+  passengers: 2
+
+# Apply the instance
+# kubectl apply -f london-ticket.yaml
+
+# Verify creation
+# kubectl get flighttickets
+
+---
+
+# Step 4: Query and Inspect the Custom Resource
+# View full YAML of the instance
+# kubectl get ft london-ticket -o yaml
+
+# Explore the schema structure
+# kubectl explain flightticket.spec
+
+---
+
+# Summary:
+# - Created a namespaced CRD with schema validation
+# - Deployed and verified a sample resource instance
+# - Demonstrated CRD structure with kubectl explain
+# This is foundational knowledge for any Kubernetes extension or custom API work.
