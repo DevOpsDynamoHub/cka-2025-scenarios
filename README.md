@@ -21,8 +21,8 @@ A free version is available with more than twenty scenarios.
 You can download and start immediately.
 
 Links:
-- [Payhip]: (https://payhip.com/b/1HK5t)
-- [Gumroad]: (https://devopsdynamo.gumroad.com/l/devopsdynamo)
+- https://payhip.com/b/1HK5t
+- https://devopsdynamo.gumroad.com/l/devopsdynamo
 
 ## Premium Edition
 
@@ -45,8 +45,8 @@ The regular price is 25 USD.
 The offer ends on 16 December 2025.
 
 Links:
-- [Payhip]: (https://payhip.com/b/3iAsH)
-- [Gumroad]: (https://devopsdynamo.gumroad.com/l/Conquer-cka-exam/CYBERWEEK)
+- https://payhip.com/b/3iAsH
+- https://devopsdynamo.gumroad.com/l/Conquer-cka-exam/CYBERWEEK
 
 ## Audience
 
