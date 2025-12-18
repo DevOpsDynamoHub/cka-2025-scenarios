@@ -38,16 +38,6 @@ Key differences:
 - Step-by-step walkthroughs
 - Additional screenshots for clarity
 
-## Current Offer
-
-During Cyber Week the premium edition is available for 10 USD.  
-The regular price is 25 USD.  
-The offer ends on 16 December 2025.
-
-Links:
-- https://payhip.com/b/3iAsH
-- https://devopsdynamo.gumroad.com/l/Conquer-cka-exam/CYBERWEEK
-
 ## Audience
 
 This material is useful for:
